@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>{% block title %}Portl da Fiel{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    
+    {%  block head %}
+    {% endblock %}
+    
+    
+</head>
+<body>
+    <header>
+        <h1>Portal da Fiel</h1>
+        <nav>
+            <ul>
+                <p>
+                    <a href="{% url 'home'%}">Home</a>
+                </p>
+                <p>
+                    <a href="{% url 'historia' %}">História</a>
+                </p>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>Copyright 2023</p>
+        <p>Feito por Pedro Aquino.</p>
+    </footer>
+    
+</body>
+</html>

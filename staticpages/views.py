@@ -1,5 +1,11 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 
-def index(request):
-    return HttpResponse("<h1>Hello World!</h1>")
+def home(request):
+    context = {}
+    return render(request, 'staticpages/home.html', context)
+
+
+def historia(request):
+    context = {}
+    return render(request, 'staticpages/historia.html', context)
