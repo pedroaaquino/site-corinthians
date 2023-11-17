@@ -1,6 +1,14 @@
 {% extends 'staticpages/base.html' %} {% block content %}
 <h2>Todos os Filmes</h2>
 {% if movie_list %}
+<section>
+  <p>
+    <a href="{% url 'jogos:search' %}">Buscar Jogos</a>
+  </p>
+  <p>
+    <a href="{% url 'jogos:create' %}">Postar Novo Jogo</a>
+  </p>
+</section>
 <section class="lista-de-cards">
   {% for movie in movie_list %}
   <article class="card">
