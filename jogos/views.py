@@ -1,0 +1,12 @@
+from django.http import HttpResponse
+from .temp_data import movie_data
+from django.shortcuts import render
+
+def detail_movie(request, movie_id):
+    context = {'movie': movie_data[movie_id - 1]}
+    return render(request, 'jogos/detail.html', context)
+
+
+def list_movies(request):
+    context = {"movie_list": movie_data}
+    return render(request, 'jogos/index.html', context)
