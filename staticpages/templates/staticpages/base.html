@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+
     
     {%  block head %}
     {% endblock %}
@@ -32,9 +33,7 @@
                 <p>
                     <a href="{% url 'jogos:index' %}">Jogos</a>
                 </p>
-                <p>
-                    <a href="{% url 'jogos:search' %}">Busca</a>
-                </p>
+
             </ul>
         </nav>
     </header>

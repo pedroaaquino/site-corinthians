@@ -1,18 +1,18 @@
 {% extends 'staticpages/base.html' %} {% block content %}
-<h2>Inserir Novo Filme</h2>
+<h2>Inserir Novo Jogo</h2>
 <form method="POST" action="{% url 'jogos:create' %}">
   {% csrf_token %}
   <p>
-    <label for="id_name">Título:</label>
+    <label for="id_name">Jogo:</label>
     <input type="text" name="name" id="id_name" />
   </p>
   <p>
-    <label for="id_release_year">Ano de Lançamento:</label>
-    <input type="number" name="release_year" id="id_release_year" />
+    <label for="id_dia_jogo">Dia do Jogo:</label>
+    <input type="number" name="dia_jogo" id="id_dia_jogo" />
   </p>
   <p>
-    <label for="id_poster_url">URL do Poster:</label>
-    <input type="url" name="poster_url" id="id_poster_url" />
+    <label for="id_escudo_url">URL do Escudo:</label>
+    <input type="url" name="escudo_url" id="id_escudo_url" />
   </p>
   <button type="submit">Criar</button>
 </form>
