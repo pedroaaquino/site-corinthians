@@ -1,16 +1,16 @@
 {% extends 'staticpages/base.html' %} {% block content %}
 <section class="body">
   <h2>Últimos Jogos</h2>
-  {% if jogos_list %}
+  {% if jogo_list %}
   <section>
     <p>
       <a href="{% url 'jogos:create' %}">Postar Novo Jogo</a>
     </p>
   </section>
   <section class="lista-de-cards">
-    {% for jogo in jogos_list %}
+    {% for jogo in jogo_list %}
     <article class="card">
-      <a href="{% url 'jogos:detail' forloop.counter %}"
+      <a href="{% url 'jogos:detail' jogo.id %}">
         ><img src="{{ jogo.escudo_url }}" alt="Escudo {{ jogo.name}}" width = 200
       /></a>
       <p>{{ jogo.name }} ({{ jogo.dia_jogo }})</p>

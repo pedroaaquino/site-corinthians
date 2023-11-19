@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Jogo, Comentario
+
+admin.site.register(Jogo)
+admin.site.register(Comentario)

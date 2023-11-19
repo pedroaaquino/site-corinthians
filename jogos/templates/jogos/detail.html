@@ -1,12 +1,20 @@
 {% extends 'staticpages/base.html' %} {% block title %} {{ jogo.name }} ({{
     jogo.dia_jogo }} {% endblock title %} {% block content %}
-    <h2>Detalhes do Filme {{ jogo.name }} ({{ jogo.dia_jogo }})</h2>
+    <h2>{{ jogo.name }} ({{ jogo.dia_jogo }})</h2>
     
-    <section class="dados-de-filme">
+    <section class="dados-do-jogo">
       <img src="{{ jogo.escudo_url }}" alt="Escudo {{ jogo.name}}" width = 200 />
       <ul>
         <li>Jogo: {{ jogo.name }}</li>
         <li>Data: {{ jogo.dia_jogo }}</li>
+        <li>Placar: {{ jogo.placar }}</li>
+      </ul>
+    </section>
+
+    <section>
+      <ul>
+        <li><a href="{% url 'jogos:update' jogo.id %}">Editar Jogo</a></li>
+        <li><a href="{% url 'jogos:delete' jogo.id %}">Apagar Jogo</a></li>
       </ul>
     </section>
     
