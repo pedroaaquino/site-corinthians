@@ -1,6 +1,6 @@
 {% extends 'staticpages/base.html' %}
 {% block content %}
-<h2>Editar Jogo {{ jogo.name }}</h2>
+<h2>Editar Jogo: {{ jogo.name }}</h2>
 <form method="POST" action="{% url 'jogos:update' jogo.id%}">
   {% csrf_token %}
   {{ form.as_p }}

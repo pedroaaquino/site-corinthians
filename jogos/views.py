@@ -7,68 +7,33 @@ from .models import Jogo
 from django.shortcuts import render, get_object_or_404
 from .models import Jogo
 from .forms import JogoForm
-
-def detail(request, jogo_id):
-    jogo = get_object_or_404(Jogo, pk=jogo_id)
-    context = {'jogo': jogo}
-    return render(request, 'jogos/detail.html', context)
+from django.views import generic
 
 
-def list(request):
-    jogo_list = Jogo.objects.all()
-    context = {"jogo_list": jogo_list}
-    return render(request, 'jogos/index.html', context)
+class DetailView(generic.DetailView):
+    model = Jogo
+    template_name = 'jogos/detail.html'
 
 
-def create(request):
-    if request.method == 'POST':
-        jogo_name = request.POST['name']
-        jogo_dia_jogo = request.POST['dia_jogo']
-        jogo_escudo_url = request.POST['escudo_url']
-        jogo_placar = request.POST['placar']
-        jogo = Jogo(name=jogo_name,
-                      dia_jogo=jogo_dia_jogo,
-                      escudo_url=jogo_escudo_url,
-                      placar=jogo_placar)
-        jogo.save()
-        return HttpResponseRedirect(
-            reverse('jogos:detail', args=(jogo.id, )))
-    else:
-        form = JogoForm()
-    context = {'form': form}
-    return render(request, 'jogos/create.html', context)
+class ListView(generic.ListView):
+    model = Jogo
+    template_name = 'jogos/index.html'
+
+
+class CreateView(generic.CreateView):
+    model = Jogo
+    form_class = JogoForm
+    template_name = 'jogos/create.html'
+    success_url = '/jogos'
     
-def update(request, jogo_id):
-    jogo = get_object_or_404(Jogo, pk=jogo_id)
 
-    if request.method == "POST":
-        form = JogoForm(request.POST)
-        if form.is_valid():
-            jogo.name = form.cleaned_data['name']
-            jogo.dia_jogo = form.cleaned_data['dia_jogo']
-            jogo.placar = form.cleaned_data['placar']
-            jogo.escudo_url = form.cleaned_data['escudo_url']
-            jogo.save()
-            return HttpResponseRedirect(
-                reverse('jogos:detail', args=(jogo.id, )))
-    else:
-        form = JogoForm(
-            initial={
-                'name': jogo.name,
-                'dia_jogo': jogo.dia_jogo,
-                'placar': jogo.placar,
-                'escudo_url': jogo.escudo_url
-            })
+class UpdateView(generic.UpdateView):
+    model = Jogo
+    form_class = JogoForm
+    template_name = 'jogos/update.html'
+    success_url = '/jogos'
 
-    context = {'jogo': jogo, 'form': form}
-    return render(request, 'jogos/update.html', context)
-
-def delete(request, jogo_id):
-    jogo = get_object_or_404(Jogo, pk=jogo_id)
-
-    if request.method == "POST":
-        jogo.delete()
-        return HttpResponseRedirect(reverse('jogos:index'))
-
-    context = {'jogo': jogo}
-    return render(request, 'jogos/delete.html', context)
+class DeleteView(generic.DeleteView):
+    model = Jogo
+    template_name = 'jogos/delete.html'
+    success_url = '/jogos'
