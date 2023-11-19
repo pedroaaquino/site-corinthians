@@ -17,5 +17,26 @@
         <li><a href="{% url 'jogos:delete' jogo.id %}">Apagar Jogo</a></li>
       </ul>
     </section>
+
+    <section>
+            <h3>Comentários:</h3>
+        <ul>
+            {% if jogo.comentario_set.all %}
+                {% for comentario in jogo.comentario_set.all %}
+                    <figure>
+                        <blockquote>
+                          <hr>
+                            - "{{ comentario.text }}", Autor: {{ comentario.author }}
+                          <hr>
+                        </blockquote>
+                        
+                    </figure>
+                {% endfor %}
+            {% else %}
+                <p>Ainda não existem comentários sobre esse jogo.</p>
+            {% endif %}
+        </ul>
+        <a href="{% url 'jogos:comentario' jogo.pk %}"><button>Comentar</button></a>
+    </section>
     
     {% endblock content %}
