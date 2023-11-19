@@ -5,6 +5,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Jogo
 from django.shortcuts import render, get_object_or_404
+from .models import Jogo
+from .forms import JogoForm
 
 def detail(request, jogo_id):
     jogo = get_object_or_404(Jogo, pk=jogo_id)
@@ -32,22 +34,33 @@ def create(request):
         return HttpResponseRedirect(
             reverse('jogos:detail', args=(jogo.id, )))
     else:
-        return render(request, 'jogos/create.html', {})
+        form = JogoForm()
+    context = {'form': form}
+    return render(request, 'jogos/create.html', context)
     
 def update(request, jogo_id):
     jogo = get_object_or_404(Jogo, pk=jogo_id)
 
     if request.method == "POST":
-        jogo.name = request.POST['name']
-        jogo.dia_jogo = request.POST['dia_jogo']
-        jogo_escudo_url = request.POST['escudo_url']
-        jogo_placar = request.POST['placar']
-        
-        jogo.save()
-        return HttpResponseRedirect(
-            reverse('jogos:detail', args=(jogo.id, )))
+        form = JogoForm(request.POST)
+        if form.is_valid():
+            jogo.name = form.cleaned_data['name']
+            jogo.dia_jogo = form.cleaned_data['dia_jogo']
+            jogo.placar = form.cleaned_data['placar']
+            jogo.escudo_url = form.cleaned_data['escudo_url']
+            jogo.save()
+            return HttpResponseRedirect(
+                reverse('jogos:detail', args=(jogo.id, )))
+    else:
+        form = JogoForm(
+            initial={
+                'name': jogo.name,
+                'dia_jogo': jogo.dia_jogo,
+                'placar': jogo.placar,
+                'escudo_url': jogo.escudo_url
+            })
 
-    context = {'jogo': jogo}
+    context = {'jogo': jogo, 'form': form}
     return render(request, 'jogos/update.html', context)
 
 def delete(request, jogo_id):
