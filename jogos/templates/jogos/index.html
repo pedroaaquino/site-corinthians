@@ -19,5 +19,8 @@
   </section>
   {% else %}
   <p>Não foi encontrado nenhum jogo.</p>
+  <p>
+    <a href="{% url 'jogos:create' %}">Postar Novo Jogo</a>
+  </p>
 </section>
 {% endif %} {% endblock content %}
