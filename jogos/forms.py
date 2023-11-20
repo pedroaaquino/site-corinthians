@@ -29,3 +29,4 @@ class ComentarioForm(ModelForm):
             'author': 'Usuário',
             'text': 'Comentário',
         }
+
