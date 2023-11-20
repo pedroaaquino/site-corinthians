@@ -11,8 +11,8 @@
     {% for jogo in jogo_list %}
     <article class="card">
       <a href="{% url 'jogos:detail' jogo.id %}">
-        ><img src="{{ jogo.escudo_url }}" alt="Escudo {{ jogo.name}}" width = 150
-      /></a>
+        <img src="{{ jogo.escudo_url }}" alt="Escudo {{ jogo.name}}" width = 150>
+      </a>
       <p>{{ jogo.name }} ({{ jogo.dia_jogo }})</p>
     </article>
     {% endfor %}

@@ -8,6 +8,9 @@
       <li>Jogo: {{ jogo.name }}</li>
       <li>Data: {{ jogo.dia_jogo }}</li>
       <li>Placar: {{ jogo.placar }}</li>
+    {% if jogo.category_set.all %}
+      <li>Campeonato: {{ jogo.category_set.all|join:", " }} </li>
+    {% endif %}
     </ul>
   </section>
 

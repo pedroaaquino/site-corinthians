@@ -21,3 +21,11 @@ class Comentario(models.Model):
 
     def __str__(self):
         return f'"{self.text}" - {self.author.username}'
+    
+
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+    jogos = models.ManyToManyField(Jogo)
+
+    def __str__(self):
+        return f'{self.name}'

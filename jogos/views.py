@@ -2,10 +2,10 @@ from django.http import HttpResponse
 from .temp_data import jogos_data
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from .models import Jogo
 from django.shortcuts import render, get_object_or_404
-from .models import Jogo, Comentario
+from .models import Jogo, Comentario, Category
 from .forms import JogoForm, ComentarioForm
 from django.views import generic
 
@@ -55,3 +55,13 @@ def create_comentario(request, jogo_id):
         form = ComentarioForm()
     context = {'form': form, 'jogo': jogo}
     return render(request, 'jogos/comentario.html', context)
+
+class CategoryListView(generic.ListView):
+    model = Category
+    template_name = 'jogos/categories.html'
+
+class CategoryCreateView(generic.CreateView):
+    model = Category
+    template_name = 'jogos/create_category.html'
+    fields = ['name', 'jogos']
+    success_url = reverse_lazy('jogos:categories')
