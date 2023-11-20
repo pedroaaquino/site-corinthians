@@ -37,3 +37,4 @@ class DeleteView(generic.DeleteView):
     model = Jogo
     template_name = 'jogos/delete.html'
     success_url = '/jogos'
+

@@ -17,3 +17,4 @@ class JogoForm(ModelForm):
             'placar': 'Placar',
             'escudo_url': 'URL do Escudo',
         }
+
