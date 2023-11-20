@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Jogo
+from .models import Jogo, Comentario
 
 
 class JogoForm(ModelForm):
@@ -18,3 +18,14 @@ class JogoForm(ModelForm):
             'escudo_url': 'URL do Escudo',
         }
 
+class ComentarioForm(ModelForm):
+    class Meta:
+        model = Comentario
+        fields = [
+            'author',
+            'text',
+        ]
+        labels = {
+            'author': 'Usuário',
+            'text': 'Comentário',
+        }

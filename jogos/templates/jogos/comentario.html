@@ -1,0 +1,13 @@
+{% extends 'staticpages/base.html' %}
+
+{% block content %}
+<h2>Escreva seu comentário sobre o jogo {{ jogo.name }}</h2>
+
+<form action="{% url 'jogos:comentario' jogo.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Postar</button>
+</form>
+
+<p><a href="{% url 'jogos:detail' jogo.id %}">Voltar para a página do jogo</a></p>
+{% endblock content %}
