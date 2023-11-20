@@ -1,5 +1,6 @@
 from django.forms import ModelForm
 from .models import Jogo, Comentario
+from .models import Jogo, Comentario
 
 
 class JogoForm(ModelForm):
