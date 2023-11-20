@@ -10,6 +10,7 @@
       <li>Placar: {{ jogo.placar }}</li>
     </ul>
   </section>
+
   <section>
     <ul>
       <li><a href="{% url 'jogos:update' jogo.id %}">Editar Jogo</a></li>
@@ -28,7 +29,7 @@
                           - "{{ comentario.text }}", Autor: {{ comentario.author }}
                         <hr>
                       </blockquote>
-
+                      
                   </figure>
               {% endfor %}
           {% else %}
@@ -37,5 +38,5 @@
       </ul>
       <a href="{% url 'jogos:comentario' jogo.pk %}"><button>Comentar</button></a>
   </section>
-
+  
   {% endblock content %}
