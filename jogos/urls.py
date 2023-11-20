@@ -11,5 +11,5 @@ urlpatterns = [
     path('delete/<int:pk>/', views.DeleteView.as_view(), name='delete'),
     path('<int:jogo_id>/comentario/', views.create_comentario, name='comentario'),
     path('categories/', views.CategoryListView.as_view(), name='categories'),
-    path('categories/create', views.CategoryCreateView.as_view(), name='create-category'),
+    path('categories/<int:category_id>', views.detail_category, name='detail_category'),
 ]

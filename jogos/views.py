@@ -60,8 +60,9 @@ class CategoryListView(generic.ListView):
     model = Category
     template_name = 'jogos/categories.html'
 
-class CategoryCreateView(generic.CreateView):
-    model = Category
-    template_name = 'jogos/create_category.html'
-    fields = ['name', 'jogos']
-    success_url = reverse_lazy('jogos:categories')
+
+def detail_category(request, category_id):  
+    category = get_object_or_404(Category, pk=category_id)
+    jogos_list = Jogo.objects.filter(category=category_id)
+    context = {'category': category,  'post_list': jogos_list}
+    return render(request, 'jogos/detail_category.html', context)

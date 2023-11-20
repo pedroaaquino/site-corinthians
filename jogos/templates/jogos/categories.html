@@ -1,32 +1,20 @@
 {% extends 'staticpages/base.html' %}
 
 {% block title %}
-Campeonatos
+Categorias
 {% endblock title %}
 
 {% block content %}
-<h2>Campeonatos:</h2>
+<h2>Categorias:</h2>
 
 <section>
     {% for category in category_list %}
     <hr>
     <article>
-            <h3> {{category.name}} </h3>
-        <div class="lista-de-cards">
-            {% for jogos in category.jogos.all %}
-            <div class="card">
-                <a href="{% url 'jogos:detail' jogos.id %}"> 
-                    <img src="{{ jogo.escudo_url }}" alt="Escudo {{ jogo.name}}" width = 150>
-                </a>
-                <p>{{ jogo.name }} ({{ jogo.dia_jogo }})</p>
-            </div>
-            {% endfor %}
-        </div>
+            <h3> <a href="{% url 'jogos:detail_category' category.id %}"> {{category.name}} </a> </h3> 
     </article>
+    <hr>
     {% endfor %}
-
-
-    <a href="{% url 'jogos:create-category' %}"><button>Adicione um campeonato</button></a>
 </section>
 
 {% endblock content %}

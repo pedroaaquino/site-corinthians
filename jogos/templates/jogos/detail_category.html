@@ -1,0 +1,24 @@
+{% extends 'staticpages/base.html' %}
+
+{% block title %}
+{{category.name}}
+{% endblock title %}
+
+{% block content %}
+
+<section>
+    <article>
+            <h3> {{category.name}} </h3>
+        <p>Últimos Jogos:</p>
+            {% for jogo in category.jogos.all %}
+            <article class="card">
+            <a href="{% url 'jogos:detail' jogo.id %}">
+                <img src="{{ jogo.escudo_url }}" alt="Escudo {{ jogo.name}}" width = 150>
+            </a>
+            <p>{{ jogo.name }} ({{ jogo.dia_jogo }})</p>
+            </article>
+            {% endfor %}
+    </article>
+</section>
+
+{% endblock content %}
