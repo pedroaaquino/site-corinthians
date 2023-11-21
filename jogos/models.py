@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
 
 
 class Jogo(models.Model):
@@ -7,6 +8,7 @@ class Jogo(models.Model):
     dia_jogo = models.DateField()
     placar = models.CharField(max_length=20)
     escudo_url = models.URLField(max_length=200, null=True)
+    date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f'{self.name} ({self.dia_jogo})'
@@ -18,6 +20,7 @@ class Comentario(models.Model):
     text = models.CharField(max_length=255)
     likes = models.IntegerField(default=0)
     jogo = models.ForeignKey(Jogo, on_delete=models.CASCADE)
+    date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f'"{self.text}" - {self.author.username}'
