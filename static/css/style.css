@@ -2,10 +2,63 @@
     padding: 0;
     margin: 0;
     color: white;
+    text-decoration: none;
     font-family: Verdana, Tahoma, sans-serif;
     max-width: 100%;
     
 
+}
+
+h1, h2, h3{
+    text-shadow:
+    -1px -1px 0 #000, 
+    1px -1px 0 #000, 
+    -1px 1px 0 #000, 
+    1px 1px 0 #000;
+    margin-top: 10px;
+    margin-bottom:10px;
+}
+
+img{
+    margin-top:20px;
+}
+
+ul{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+li {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+input{
+    color:black;
+    margin-top: 10px
+}
+
+button{
+    color: black;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+a:-webkit-any-link {
+    padding: 10px;
+    display: flex;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+}
+
+select{
+    color: black;
+    background-color: rgb(183, 179, 179);
+    border-radius: 2px
 }
 
 body {
@@ -16,4 +69,11 @@ body {
     background-image: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50,50,50,0.5)), url('../arena.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+blockquote{
+    background-color: white;
+    color: black;
+    margin-left: 100px;
+    margin-right: 100px;
 }
