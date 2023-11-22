@@ -8,10 +8,14 @@
       <li>Jogo: {{ jogo.name }}</li>
       <li>Data: {{ jogo.dia_jogo }}</li>
       <li>Placar: {{ jogo.placar }}</li>
-    {% if jogo.category_set.all %}
-      <li>Categoria(s): {{ jogo.category_set.all|join:", " }} </li>
-    {% endif %}
     </ul>
+
+    {% if jogo.category_set.all %}
+      <h3>Categoria(s):</h3> 
+      {% for category in jogo.category_set.all %}
+        <a href="{% url 'jogos:detail_category' category.id %}">{{ category.name }}</a>
+      {% endfor %}
+    {% endif %}
   </section>
 
   <section>

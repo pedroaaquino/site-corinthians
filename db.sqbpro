@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/pedro/SI/site-corinthians2/corinthians/db.sqlite3" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="150"/><column_width id="3" width="4523"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,10:mainauth_group"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">SELECT * FROM jogos_jogo ORDER BY date DESC;</sql><sql name="SQL 2">SELECT * FROM jogos_comentario
+WHERE jogo_id = 1;</sql><sql name="SQL 3">SELECT 
+    jogos_comentario.id, 
+	jogos_comentario.text,
+	jogos_comentario.author_id, 
+    jogos_jogo.name AS post_title,
+    jogos_jogo.date AS post_date
+FROM 
+    jogos_comentario
+JOIN 
+    jogos_jogo ON jogos_comentario.jogo_id = jogos_jogo.id
+WHERE 
+    jogos_comentario.jogo_id = 1;</sql><sql name="SQL 4">SELECT 
+    jogos_category.*, 
+    jogos_jogo.*
+FROM 
+    jogos_category
+JOIN 
+    jogos_category_jogos ON jogos_category.id = jogos_category_jogos.category_id
+JOIN 
+    jogos_jogo ON jogos_category_jogos.jogo_id = jogos_jogo.id
+WHERE 
+    jogos_category.id = 1;</sql><sql name="SQL 5">SELECT 
+    jogos_category.*, 
+    COUNT(DISTINCT jogos_category_jogos.jogo_id) AS total_posts
+FROM 
+    jogos_category
+JOIN 
+    jogos_category_jogos ON jogos_category.id = jogos_category_jogos.category_id
+GROUP BY 
+    jogos_category.id
+HAVING 
+    COUNT(DISTINCT jogos_category_jogos.jogo_id) &gt;= 2;</sql><current_tab id="4"/></tab_sql></sqlb_project>
